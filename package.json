@@ -3,6 +3,9 @@
   "version": "0.1.0",
   "private": true,
   "type": "module",
+  "engines": {
+    "node": ">=20"
+  },
   "dependencies": {
     "@radix-ui/react-accordion": "*",
     "@radix-ui/react-alert-dialog": "*",
@@ -62,7 +65,7 @@
   "scripts": {
     "dev": "vite --host 127.0.0.1",
     "dev:clear": "rm -rf node_modules/.vite && vite --host 127.0.0.1",
-    "build": "vite build",
+    "build": "node --max-old-space-size=8192 ./node_modules/vite/bin/vite.js build",
     "preview": "vite preview --host 127.0.0.1",
     "playwright:install": "playwright install chromium",
     "test:e2e": "playwright test",
