@@ -1,0 +1,9 @@
+[build]
+  command = "npm run build"
+  publish = "build"
+
+# React Router（Browser History）：非静态文件请求回退到入口，避免刷新 /main-ai 等 404
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200

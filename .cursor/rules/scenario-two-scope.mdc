@@ -1,0 +1,14 @@
+---
+description: 后续代码与产品调整默认仅针对场景二（edu-one）
+alwaysApply: true
+---
+
+# 场景二专属演进范围
+
+除非用户在当次对话中**明确**要求影响其它入口，否则：
+
+- **默认只修改场景二**：首页「场景二（加入一个教育机构）」对应路由参数 `scenario=edu-one`，代码中优先以 `isScenarioTwo(scenario)`（`src/components/main-ai/homeScenarioLayout.ts`）作为守卫。
+- **不要改动**：场景三（`school-one`）、《主入口》（无 `scenario`）、场景一（`no-org`）、场景四/五、`cui-card-rules` 等既有行为与文案，除非用户点名要动。
+- **与场景三曾共用的并列守卫**（如 `isSingleOrgEduAttendanceScenarioFlow`）：若需求**仅**针对场景二，应在实现里拆出 `isScenarioTwo` 分支单独演进，避免在共享分支里改逻辑却连带改变场景三。
+
+术语对齐见项目规则《CUI 项目全局术语》。
